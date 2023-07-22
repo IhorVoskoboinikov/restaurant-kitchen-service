@@ -1,13 +1,19 @@
-from django.contrib.auth.decorators import login_required
 from django.db.models import QuerySet
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from .forms import CookCreationForm, CookUpdateForm, DishForm, CookSearchForm, DishSearchForm, DishTypeSearchForm
 from .models import Cook, Dish, DishType
+from .forms import (
+    CookCreationForm,
+    CookUpdateForm,
+    DishForm,
+    CookSearchForm,
+    DishSearchForm,
+    DishTypeSearchForm
+)
 
 
 class IndexView(View):
@@ -72,7 +78,6 @@ class CookDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("kitchen:cook-list")
 
 
-# ====================================DishType======================================================================
 class DishTypeListView(LoginRequiredMixin, generic.ListView):
     model = DishType
     context_object_name = "dish_type_list"
@@ -121,7 +126,6 @@ class DishTypeDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("kitchen:dish-type-list")
 
 
-# ========================================Dish=====================================================================
 class DishListView(LoginRequiredMixin, generic.ListView):
     model = Dish
     paginate_by = 5

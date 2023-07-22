@@ -30,4 +30,7 @@
       <p>No dishes!</p>
     {% endfor %}
   </div>
+  <a href="{% url 'kitchen:cook-list' %}" class="btn btn-secondary">
+    Back
+  </a>
 {% endblock %}

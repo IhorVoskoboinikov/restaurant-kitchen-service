@@ -2,9 +2,16 @@
 
 {% block content %}
   <h1>Are you sure you want to delete {{ dish.name }}?</h1>
-  <form action="" method="post">
-    {% csrf_token %}
-
-    <input type="submit" value="Yes" class="btn btn-danger">
-  </form>
+  <div class="row">
+    <div>
+      <form action="" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Yes" class="btn btn-danger">
+      </form>
+    </div>
+    <div class="col">
+      <a href="{% url 'kitchen:dish-detail' pk=dish.id %}" class="btn btn-secondary">Back</a>
+    </div>
+  </div>
 {% endblock %}
+

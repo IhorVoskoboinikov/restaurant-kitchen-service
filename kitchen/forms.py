@@ -6,24 +6,34 @@ from django.core.exceptions import ValidationError
 from .models import Cook, Dish
 
 
-class CookCreationForm(UserCreationForm):
-    class Meta(UserCreationForm.Meta):
-        model = Cook
-        fields = UserCreationForm.Meta.fields + (
-            "first_name",
-            "last_name",
-            "years_of_experience",
-        )
-
-
-class CookUpdateForm(forms.ModelForm):
+class BaseCookForm(forms.ModelForm):
     class Meta:
         model = Cook
         fields = (
             "first_name",
             "last_name",
-            "years_of_experience",
+            "years_of_experience"
         )
+
+    def clean_years_of_experience(self):
+        years_of_experience = self.cleaned_data.get("years_of_experience")
+
+        if not 0 <= years_of_experience < 50:
+            raise forms.ValidationError(
+                "Year of experience must be between 0 and 50 years!"
+            )
+
+        return years_of_experience
+
+
+class CookCreationForm(BaseCookForm, UserCreationForm):
+    class Meta(UserCreationForm.Meta):
+        model = Cook
+        fields = UserCreationForm.Meta.fields + BaseCookForm.Meta.fields
+
+
+class CookUpdateForm(BaseCookForm):
+    pass
 
 
 class DishForm(forms.ModelForm):

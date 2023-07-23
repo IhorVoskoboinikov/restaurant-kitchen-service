@@ -19,7 +19,7 @@ class BaseCookForm(forms.ModelForm):
         years_of_experience = self.cleaned_data.get("years_of_experience")
 
         if not 0 <= years_of_experience < 50:
-            raise forms.ValidationError(
+            raise ValidationError(
                 "Year of experience must be between 0 and 50 years!"
             )
 

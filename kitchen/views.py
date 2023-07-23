@@ -16,7 +16,7 @@ from .forms import (
 )
 
 
-class IndexView(View):
+class IndexView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         total_chefs = Cook.objects.count()
         total_dish_type = Dish.objects.count()

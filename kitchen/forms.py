@@ -7,6 +7,9 @@ from .models import Cook, Dish
 
 
 class BaseCookForm(forms.ModelForm):
+    MIN_EXPERIENCE = 0
+    MAX_EXPERIENCE = 50
+
     class Meta:
         model = Cook
         fields = (
@@ -18,7 +21,7 @@ class BaseCookForm(forms.ModelForm):
     def clean_years_of_experience(self):
         years_of_experience = self.cleaned_data.get("years_of_experience")
 
-        if not 0 <= years_of_experience < 50:
+        if not BaseCookForm.MIN_EXPERIENCE <= years_of_experience < BaseCookForm.MAX_EXPERIENCE:
             raise ValidationError(
                 "Year of experience must be between 0 and 50 years!"
             )

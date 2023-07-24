@@ -3,14 +3,16 @@
 
 {% block content %}
   <h1>{{ object|yesno:"Update,Create" }} new cook:
-    <a href="{% url 'kitchen:cook-detail'  pk=cook.id %}" class="btn btn-secondary link-to-page">
-      Back
-    </a>
   </h1>
   <form action="" method="post" novalidate>
     {% csrf_token %}
     {{ form|crispy }}
 
     <input type="submit" value="Submit" class="btn btn-primary">
+    {% if object %}
+      <a href="{% url 'kitchen:cook-detail'  pk=cook.id %}" class="btn btn-secondary link-to-page">
+        Back
+      </a>
+    {% endif %}
   </form>
 {% endblock %}

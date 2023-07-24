@@ -6,5 +6,8 @@
     {% csrf_token %}
 
     <input type="submit" value="Yes" class="btn btn-danger">
+    <a href="{% url 'kitchen:cook-detail' pk=cook.id %}" class="btn btn-secondary">
+      Back
+    </a>
   </form>
 {% endblock %}

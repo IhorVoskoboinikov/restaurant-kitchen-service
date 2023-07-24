@@ -2,40 +2,50 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>
-    Cook List
-    <a href="{% url 'kitchen:cook-create' %}" class="btn btn-primary link-to-page">
-      Create
-    </a>
-  </h1>
-  <form action="" method="get" class="form-inline">
-    {{ search_form|crispy }}
-    <input type="submit" value="🔍" class="btn btn-secondary">
-  </form>
+  <div class="content-wrapper"
+       style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 10px; padding: 20px; text-align: center;">
+    <h1>
+      Cook List
+      <a href="{% url 'kitchen:cook-create' %}" class="btn btn-primary link-to-page float-right">
+        Create
+      </a>
+    </h1>
+  </div>
+  <br>
+  <div class="content-wrapper"
+       style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 10px; padding: 20px;">
+    <form action="" method="get" class="form-inline" style="text-align: center; margin-bottom: 20px;">
+      {{ search_form|crispy }}
+      <input type="submit" value="🔍" class="btn btn-secondary">
+    </form>
+    <br>
 
-  {% if cook_list %}
-    <table class="table">
-      <tr>
-        <th>ID</th>
-        <th>Username</th>
-        <th>First name</th>
-        <th>Last name</th>
-        <th>Years of experience</th>
-      </tr>
-      {% for cook in cook_list %}
+    {% if cook_list %}
+      <table class="table">
         <tr>
-          <td>{{ cook.id }}</td>
-          <td><a href="{% url "kitchen:cook-detail" pk=cook.id %}">{{ cook.username }}</a>
-            {% if user.id == cook.id %}
-              (ME)
-            {% endif %}</td>
-          <td>{{ cook.first_name }}</td>
-          <td>{{ cook.last_name }}</td>
-          <td>{{ cook.years_of_experience }}</td>
+          <th style="font-weight: bold; padding: 10px; text-align: center;">ID</th>
+          <th style="font-weight: bold; padding: 10px; text-align: center;">Username</th>
+          <th style="font-weight: bold; padding: 10px; text-align: center;">First name</th>
+          <th style="font-weight: bold; padding: 10px; text-align: center;">Last name</th>
+          <th style="font-weight: bold; padding: 10px; text-align: center;">Years of experience</th>
         </tr>
-      {% endfor %}
-    </table>
-  {% else %}
-    <p>There are no cook in the service.</p>
-  {% endif %}
+        {% for cook in cook_list %}
+          <tr>
+            <td style="font-weight: bold; padding: 10px; text-align: center;">{{ cook.id }}</td>
+            <td style="font-weight: bold; padding: 10px; text-align: center;"><a
+                href="{% url "kitchen:cook-detail" pk=cook.id %}">{{ cook.username }}</a>
+              {% if user.id == cook.id %}
+                (ME)
+              {% endif %}</td>
+            <td style="font-weight: bold; padding: 10px; text-align: center;">{{ cook.first_name }}</td>
+            <td style="font-weight: bold; padding: 10px; text-align: center;">{{ cook.last_name }}</td>
+            <td style="font-weight: bold; padding: 10px; text-align: center;">{{ cook.years_of_experience }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+      <p>There are no cooks in the service.</p>
+    {% endif %}
+  </div>
+  <br>
 {% endblock %}

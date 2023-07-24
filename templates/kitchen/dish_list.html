@@ -2,39 +2,49 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
-  <h1>
-    Dish list
-    <a href="{% url 'kitchen:dish-create' %}" class="btn btn-primary link-to-page">
-      Create
-    </a>
-  </h1>
-  <form action="" method="get" class="form-inline">
-    {{ search_form|crispy }}
-    <input type="submit" value="🔍" class="btn btn-secondary">
-  </form>
-  {% if dish_list %}
-    <table class="table">
-      <tr>
-        <th>Dish name</th>
-        <th>Dish type</th>
-        <th>Price</th>
-      </tr>
+  <div class="content-wrapper"
+       style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 10px; padding: 20px;text-align: center;">
+    <h1>
+      Dish List
+      <a href="{% url 'kitchen:dish-create' %}" class="btn btn-primary link-to-page float-right">
+        Create
+      </a>
+    </h1>
+  </div>
+  <br>
 
-      {% for dish in dish_list %}
+  <div class="content-wrapper"
+       style="background-color: #f8f9fa; border: 1px solid #dee2e6; border-radius: 10px; padding: 20px;">
+    <form action="" method="get" class="form-inline" style="text-align: center; margin-bottom: 20px;">
+      {{ search_form|crispy }}
+      <input type="submit" value="🔍" class="btn btn-secondary search-button" style="margin-left: 10px;">
+    </form>
+
+    {% if dish_list %}
+      <table class="table" style="width: 100%;">
         <tr>
-          <td>
-            <a href="{% url 'kitchen:dish-detail' pk=dish.id %} ">{{ dish.name }}</a>
-          </td>
-          <td>
-            {{ dish.dish_type }}
-          </td>
-          <td>
-            {{ dish.price }} $
-          </td>
+          <th style="font-weight: bold; padding: 10px; text-align: center;">Dish name</th>
+          <th style="font-weight: bold; padding: 10px; text-align: center;">Dish type</th>
+          <th style="font-weight: bold; padding: 10px; text-align: center;">Price</th>
         </tr>
-      {% endfor %}
-    </table>
-  {% else %}
-    <p>There are no cars in taxi</p>
-  {% endif %}
+
+        {% for dish in dish_list %}
+          <tr>
+            <td style="padding: 10px; text-align: center;">
+              <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a>
+            </td>
+            <td style="padding: 10px; text-align: center;">
+              {{ dish.dish_type }}
+            </td>
+            <td style="padding: 10px; text-align: center;">
+              {{ dish.price }} $
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+      <p class="no-records" style="text-align: center; margin-top: 20px;">There are no cars in taxi</p>
+    {% endif %}
+  </div>
+  <br>
 {% endblock %}

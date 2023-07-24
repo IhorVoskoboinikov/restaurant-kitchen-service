@@ -1,12 +1,38 @@
 {% extends "base.html" %}
 
+{% block title %}<title>Kitchen Service - Home</title>{% endblock %}
+
 {% block content %}
-  <h1>Kitchen Service Home</h1>
-  <p>Welcome to the best Kitchen Service Ever!</p>
-  <h2>Our services: content</h2>
-  <ul>
-    <li><strong>Total  Cooks:</strong> {{ total_chefs }}</li>
-    <li><strong>Total dish type:</strong> {{ total_dish_type }}</li>
-    <li><strong>Total dish:</strong> {{ total_dish }}</li>
-  </ul>
+  <div class="jumbotron text-center">
+    <h1 class="display-4">Welcome to Kitchen Service</h1>
+    <p class="lead">The best Kitchen Service Ever!</p>
+    <p>This server will help you create dishes and their types, assign chefs who will cook these dishes, and manage all the information conveniently through the user-friendly interface of our website. You will always find the information you need with our easy-to-navigate website. Experience the joy of cooking and exploring new culinary delights with Kitchen Service!</p>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="card bg-info text-white text-center">
+        <div class="card-body">
+          <h5 class="card-title">Total Cooks</h5>
+          <p class="card-text border border-white rounded p-2">{{ total_chefs }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-primary text-white text-center">
+        <div class="card-body">
+          <h5 class="card-title">Total Dish Types</h5>
+          <p class="card-text border border-white rounded p-2">{{ total_dish_type }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card bg-success text-white text-center">
+        <div class="card-body">
+          <h5 class="card-title">Total Dishes</h5>
+          <p class="card-text border border-white rounded p-2">{{ total_dish }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock %}

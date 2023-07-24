@@ -3,27 +3,25 @@ html, body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  position: relative;
-  overflow: hidden;
-}
-
-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background-image: url("https://amiel.club/uploads/posts/2022-10/1664580746_2-amiel-club-p-kafe-v-cherno-belom-stile-krasivo-2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
-  opacity: 0.4; /* Задаем прозрачность для фоновой картинки */
-  z-index: -1;
 }
 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7); /* Прозрачность фонового изображения */
+}
 
+body {
+  overflow-y: auto;
+}
 
 
 .container-fluid {

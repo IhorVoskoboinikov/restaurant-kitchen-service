@@ -1,0 +1,102 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://amiel.club/uploads/posts/2022-10/1664580746_2-amiel-club-p-kafe-v-cherno-belom-stile-krasivo-2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  opacity: 0.4; /* Задаем прозрачность для фоновой картинки */
+  z-index: -1;
+}
+
+
+
+
+.container-fluid {
+  padding: 20px;
+}
+
+/* Персонализированные стили для index.html */
+.jumbotron {
+    background-color: #f8f9fa;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.jumbotron h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.jumbotron p {
+    font-size: 18px;
+}
+
+.card {
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 16px;
+}
+
+.page-heading {
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-inline {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-button {
+    margin-left: 10px;
+}
+
+.table {
+    width: 100%;
+}
+
+th {
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+}
+
+td, th {
+    padding: 10px;
+    text-align: center;
+}
+
+.delete-link {
+    color: red;
+}
+
+.no-records {
+    text-align: center;
+    margin-top: 20px;
+}

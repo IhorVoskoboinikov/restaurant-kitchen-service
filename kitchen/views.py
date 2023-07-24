@@ -1,6 +1,6 @@
 from django.db.models import QuerySet
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic, View
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -173,12 +173,15 @@ class DishDeleteView(LoginRequiredMixin, generic.DeleteView):
     success_url = reverse_lazy("kitchen:dish-list")
 
 
-class ToggleAssignToCar(LoginRequiredMixin, View):
+class CookAssignToDish(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         pk = kwargs.get("pk")
-        cook = Cook.objects.get(id=request.user.id)
-        if Dish.objects.get(id=pk) in cook.dishes.all():
-            cook.dishes.remove(pk)
+        cook = get_object_or_404(Cook, id=request.user.id)
+        dish = get_object_or_404(Dish, id=pk)
+
+        if dish in cook.dishes.all():
+            cook.dishes.remove(dish)
         else:
-            cook.dishes.add(pk)
+            cook.dishes.add(dish)
+
         return HttpResponseRedirect(reverse_lazy("kitchen:dish-detail", args=[pk]))

@@ -2,7 +2,7 @@
   {% if user.is_authenticated %}
     <li style="list-style: none; margin-bottom: 10px;">
       <strong>User:</strong>
-      <a href="{{ user.get_absolute_url }}" class="btn btn-success btn-block">vosk_ihor</a>
+      <a href="{{ user.get_absolute_url }}" class="btn btn-block btn-success"> {{ user.username }} </a>
     </li>
     <li style="list-style: none; margin-bottom: 10px;">
       <a class="btn btn-danger btn-block" href="{% url 'logout' %}?next={{ request.path }}">Logout</a>

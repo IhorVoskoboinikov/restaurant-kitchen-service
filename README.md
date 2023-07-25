@@ -3,6 +3,8 @@
 Kitchen Service (CRUD application) is a web application for managing recipes, 
 cooks, and dish types in a restaurant kitchen.
 
+[Restaurant Kitchen Service deployed to RENDER]()
+
 ## Entities:
 
 1. Cook(UserAdmin)
@@ -40,3 +42,4 @@ ___
 > 3. Since you are an administrator, you can follow the link http://127.0.0.1:8000/admin/ and assign access rights for
      employees
 
+[Website Interface](demo.PNG)

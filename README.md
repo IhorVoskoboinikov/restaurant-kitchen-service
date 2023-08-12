@@ -17,16 +17,21 @@ cooks, and dish types in a restaurant kitchen.
 1. Clone the project:
 + ```git clone https://github.com/ihorvoskoboinikov/django_test_prodject.git```
 2. Create virtual environment and activate it
+     ####  for Unix OC
 + ```python3 -m venv venv```
-+ ```source venv/bin/activate```
++ ```source venv/bin/activate``` for Unix OC
+     #### for Windows
++ ```python -m venv venv```
++ ```venv\Scripts\activate```
+
 3. Install dependencies
 + ```pip install -r requirements.txt```
 4. Run migrations
-+ ```python manage.py makemigrations```
 + ```python manage.py migrate```
 5. Create superuser 
 + ```python manage.py createsuperuser```  (enter your username and password)
 6. Run server on local host
++ you must create .env file with your data (look at exemple in .env.sample)
 + ```python manage.py runserver```
 ___
 
@@ -55,4 +60,4 @@ login: `test_user`
 
 password: `test123test`
 
-[Website Interface](demo.PNG)
+![Website Interface](demo.PNG)
